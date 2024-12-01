@@ -12,7 +12,7 @@ public class PropertiesConfig {
             String filePath = System.getProperty("user.dir")+"/src/test/resources/config.properties";
             FileInputStream file = new FileInputStream(filePath);
             properties.load(file);
-            value = properties.getProperty(key).toString();
+            value = properties.getProperty(key);
             if(value.isEmpty() || value.isBlank()) {
                 throw new Exception("Value is not specified for the key : "+key);
             }
