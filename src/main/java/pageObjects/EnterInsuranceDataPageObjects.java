@@ -4,10 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import testBase.BaseTest;
 
 import java.util.List;
 
-public class EnterInsuranceDataPageObjects {
+public class EnterInsuranceDataPageObjects extends BaseTest {
 
     @FindBy(id = "firstname")
     private WebElement txt_firstName;
@@ -55,8 +56,24 @@ public class EnterInsuranceDataPageObjects {
     private WebElement btn_prev;
 
 
-    public EnterInsuranceDataPageObjects(WebDriver driver) {
+    public EnterInsuranceDataPageObjects() {
         PageFactory.initElements(driver,this);
 
+    }
+
+    public void enterInsuranceData() throws Exception {
+        txt_firstName.sendKeys("Test");
+        txt_lastName.sendKeys("user");
+        date_dob.sendKeys("11/20/1990");
+        reusbaleMethods.selectRadioButton(rd_gender,"male");
+        txt_address.sendKeys("Test Address");
+        reusbaleMethods.selectOptionFromDropdown(dd_country,"India");
+        txt_zipcode.sendKeys("570045");
+        txt_city.sendKeys("Bangalore");
+        reusbaleMethods.selectCheckBoxes(chk_hobbies,"Speeding,Skydiving");
+    }
+
+    public void clickNext() {
+        btn_next.click();
     }
 }

@@ -1,11 +1,11 @@
 package pageObjects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import testBase.BaseTest;
 
-public class HomePageObjects {
+public class HomePageObjects extends BaseTest {
     @FindBy(id = "nav_automobile")
     private WebElement link_automobile;
 
@@ -18,7 +18,11 @@ public class HomePageObjects {
     @FindBy(id = "nav_camper")
     private WebElement link_capmer;
 
-    public HomePageObjects(WebDriver driver) {
+    public HomePageObjects() {
         PageFactory.initElements(driver,this);
+    }
+
+    public void clickOnMotorcycleLink() {
+        link_motorcycle.click();
     }
 }
