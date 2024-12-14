@@ -2,6 +2,7 @@ package testBase;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import commonMethods.ExcelUtility;
 import commonMethods.ReusbaleMethods;
 import org.openqa.selenium.WebDriver;
 import pageObjects.EnterInsuranceDataPageObjects;
@@ -19,4 +20,5 @@ public class ObjectsRepo {
     public static EnterInsuranceDataPageObjects enterInsuranceDataPageObjects;
     public static EnterProductDataPageObjects enterProductDataPageObjects;
     public ReusbaleMethods reusbaleMethods = new ReusbaleMethods();
+    public ExcelUtility excelUtility = new ExcelUtility();
 }

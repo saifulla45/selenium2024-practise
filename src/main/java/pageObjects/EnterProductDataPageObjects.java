@@ -33,11 +33,11 @@ public class EnterProductDataPageObjects extends BaseTest {
     @FindBy(id = "preventerinsurancedata")
     private WebElement btn_prev;
 
-    @FindBy(id = "nextenterinsurancedata")
+    @FindBy(id = "nextselectpriceoption")
     private WebElement btn_next;
 
     public void enterProductData() throws Exception {
-        date_startDate.sendKeys("01/02/2024");
+        date_startDate.sendKeys("04/02/2025");
         reusbaleMethods.selectOptionFromDropdown(dd_insuranceSum,"5.000.000,00");
         reusbaleMethods.selectOptionFromDropdown(dd_damageInsurance,"Full Coverage");
         reusbaleMethods.selectCheckBoxes(chk_optionalProducts,"Euro Protection,Legal Defence Insurance");
