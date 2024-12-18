@@ -1,15 +1,13 @@
 package insuranceCalculation_Motorcycle;
 
 import com.aventstack.extentreports.Status;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import constants.FrameworkConstants;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import testBase.BaseTest;
-
-import java.time.Duration;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class EndToEndTests_Motorcycle extends BaseTest {
@@ -32,17 +30,22 @@ public class EndToEndTests_Motorcycle extends BaseTest {
         Assert.assertEquals(actualValues,expectedValues,"Values do not match in the dropdown ");
     }
 
-    @Test
-    public void insuranceCalculate() throws Exception {
+    @Test(dataProvider = "sheetData")
+    public void insuranceCalculate(HashMap<String,String> testData) throws Exception {
         homePageObjects.clickOnMotorcycleLink();
-
-        enterVehicleDataPageObjects.enterVehicleData();
+        System.out.println(testData.toString());
+        enterVehicleDataPageObjects.enterVehicleData(testData);
         enterVehicleDataPageObjects.clickNext();
 
-        enterInsuranceDataPageObjects.enterInsuranceData();
+        enterInsuranceDataPageObjects.enterInsuranceData(testData);
         enterInsuranceDataPageObjects.clickNext();
 
-        enterProductDataPageObjects.enterProductData();
+        enterProductDataPageObjects.enterProductData(testData);
         enterProductDataPageObjects.clickNext();
+    }
+
+    @DataProvider(name="sheetData")
+    public Object[] testDataSupplier(){
+        return excelUtility.getDataFromExcel(FrameworkConstants.getExcelFilePath(),"Vehicle_Data");
     }
 }

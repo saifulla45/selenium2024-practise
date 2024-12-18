@@ -1,11 +1,12 @@
 package pageObjects;
 
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import testBase.BaseTest;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class EnterVehicleDataPageObjects extends BaseTest {
@@ -62,15 +63,15 @@ public class EnterVehicleDataPageObjects extends BaseTest {
         return reusbaleMethods.getDropdownOptionsAsList(dd_model);
     }
 
-    public void enterVehicleData() throws Exception {
-        reusbaleMethods.selectOptionFromDropdown(dd_make,"BMW");
-        reusbaleMethods.selectOptionFromDropdown(dd_model,"Moped");
-        txt_CylinderCapacity.sendKeys("333");
-        txt_enginePerformance.sendKeys("55");
-        date_dateOfManufacture.sendKeys("01/12/2024");
-        reusbaleMethods.selectOptionFromDropdown(dd_numberOfSeats,"2");
-        txt_listPrice.sendKeys("560");
-        txt_annualMileage.sendKeys("110");
+    public void enterVehicleData(HashMap<String,String> testData) throws Exception {
+        reusbaleMethods.selectOptionFromDropdown(dd_make,testData.get("Make"));
+        reusbaleMethods.selectOptionFromDropdown(dd_model, testData.get("Model"));
+        txt_CylinderCapacity.sendKeys(testData.get("Cylinder_Capacity"));
+        txt_enginePerformance.sendKeys(testData.get("Engine_Performance"));
+        date_dateOfManufacture.sendKeys(testData.get("Date_Of_Manufacture"));
+        reusbaleMethods.selectOptionFromDropdown(dd_numberOfSeats,testData.get("No_Of_Seats"));
+        txt_listPrice.sendKeys(testData.get("List_Price"));
+        txt_annualMileage.sendKeys(testData.get("Annual_Mileage"));
     }
 
     public void clickNext() {
