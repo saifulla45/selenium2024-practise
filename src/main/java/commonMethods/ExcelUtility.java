@@ -29,7 +29,7 @@ public class ExcelUtility {
                 map = new HashMap<>();
                 for(int j=0;j<columnNum;j++) {
                     String key = sheet.getRow(0).getCell(j).getStringCellValue();
-                    String value = sheet.getRow(i).getCell(j).getStringCellValue();
+                    String value = sheet.getRow(i).getCell(j).toString();
                     map.put(key,value);
                     data[rowNum-1] = map;
                 }

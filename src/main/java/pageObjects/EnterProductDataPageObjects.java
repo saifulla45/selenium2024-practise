@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import testBase.BaseTest;
 
 import java.util.List;
+import java.util.Map;
 
 public class EnterProductDataPageObjects extends BaseTest {
     public EnterProductDataPageObjects() {
@@ -36,11 +37,11 @@ public class EnterProductDataPageObjects extends BaseTest {
     @FindBy(id = "nextselectpriceoption")
     private WebElement btn_next;
 
-    public void enterProductData() throws Exception {
-        date_startDate.sendKeys("04/02/2025");
-        reusbaleMethods.selectOptionFromDropdown(dd_insuranceSum,"5.000.000,00");
-        reusbaleMethods.selectOptionFromDropdown(dd_damageInsurance,"Full Coverage");
-        reusbaleMethods.selectCheckBoxes(chk_optionalProducts,"Euro Protection,Legal Defence Insurance");
+    public void enterProductData(Map<String,String> testData) throws Exception {
+        date_startDate.sendKeys(testData.get("Start_Data"));
+        reusbaleMethods.selectOptionFromDropdown(dd_insuranceSum, testData.get("Insurance_Sum"));
+        reusbaleMethods.selectOptionFromDropdown(dd_damageInsurance, testData.get("Damage_Insurance"));
+        reusbaleMethods.selectCheckBoxes(chk_optionalProducts, testData.get("Optional_Products"));
     }
 
     public void clickNext() {

@@ -33,14 +33,14 @@ public class EndToEndTests_Motorcycle extends BaseTest {
     @Test(dataProvider = "sheetData")
     public void insuranceCalculate(HashMap<String,String> testData) throws Exception {
         homePageObjects.clickOnMotorcycleLink();
-
+        System.out.println(testData.toString());
         enterVehicleDataPageObjects.enterVehicleData(testData);
         enterVehicleDataPageObjects.clickNext();
 
-        enterInsuranceDataPageObjects.enterInsuranceData();
+        enterInsuranceDataPageObjects.enterInsuranceData(testData);
         enterInsuranceDataPageObjects.clickNext();
 
-        enterProductDataPageObjects.enterProductData();
+        enterProductDataPageObjects.enterProductData(testData);
         enterProductDataPageObjects.clickNext();
     }
 
